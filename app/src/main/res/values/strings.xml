@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Михаил Марухин</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close_menu">Open</string>
+    <string name="open_menu">Close</string>
+    <string name="progress_dialog_up">Working...</string>
+    <string name="progress_dialog_mid">Downloading Data...</string>
+    <string name="db_not_loaded">Не удалось полностью загрузить данные</string>
+    <string name="character_words">Words:</string>
+    <string name="born">Born:</string>
+    <string name="died">Died:</string>
+    <string name="titles">Titles:</string>
+    <string name="aliases">Aliases:</string>
+    <string name="father">Father:</string>
+    <string name="mother">Mother:</string>
+</resources>
