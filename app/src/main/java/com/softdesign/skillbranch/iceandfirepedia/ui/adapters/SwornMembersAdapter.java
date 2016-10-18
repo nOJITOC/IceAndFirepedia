@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.softdesign.skillbranch.iceandfirepedia.R;
+import com.softdesign.skillbranch.iceandfirepedia.data.managers.DataManager;
 import com.softdesign.skillbranch.iceandfirepedia.data.storage.models.SwornMember;
 
 import java.util.List;
@@ -23,11 +24,13 @@ public class SwornMembersAdapter extends RecyclerView.Adapter<SwornMembersAdapte
     CustomItemClickListener mListener;
     List<SwornMember> mMemberList;
     Context mContext;
+    DataManager mDataManager;
 
     public SwornMembersAdapter(List<SwornMember> memberList, CustomItemClickListener listener, int drawableId) {
         mMemberList = memberList;
         mListener = listener;
         mDrawableId = drawableId;
+        mDataManager = DataManager.getInstance();
     }
 
     @Override
@@ -45,7 +48,12 @@ public class SwornMembersAdapter extends RecyclerView.Adapter<SwornMembersAdapte
                 .fitCenter()
                 .centerCrop()
                 .into(holder.mImageView);
-        holder.mTextView.setText(mMemberList.get(position).getName());
+        holder.mNameTv.setText(mMemberList.get(position).getName());
+        holder.mWordsTv.setText(mDataManager
+                .getDaoSession()
+                .getHouseDao()
+                .load(mMemberList.get(position).getHouseRemoteId())
+                .getWords());
 
 
     }
@@ -59,12 +67,13 @@ public class SwornMembersAdapter extends RecyclerView.Adapter<SwornMembersAdapte
 
         private CustomItemClickListener mItemClickListener;
         ImageView mImageView;
-        TextView mTextView;
+        TextView mNameTv, mWordsTv;
 
         public SwornMemberViewHolder(View itemView, CustomItemClickListener listener) {
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.emblem);
-            mTextView = (TextView) itemView.findViewById(R.id.name_tv);
+            mNameTv = (TextView) itemView.findViewById(R.id.name_tv);
+            mWordsTv = (TextView) itemView.findViewById(R.id.words_tv);
             mItemClickListener = listener;
             itemView.setOnClickListener(this);
 

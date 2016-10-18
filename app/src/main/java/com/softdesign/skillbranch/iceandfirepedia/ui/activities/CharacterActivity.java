@@ -76,8 +76,7 @@ public class CharacterActivity extends BaseActivity {
 
         mHerbImage.setImageResource(ConstantManager.HERBS.get(mCurrentCharacter.getHouseRemoteId()));
 
-        mToolbar.setTitle(mCurrentCharacter.getName());
-//        mCollapsingToolbar.setTitle(mCurrentCharacter.getName());
+        mCollapsingToolbar.setTitle(mCurrentCharacter.getName());
         setInfoAboutCharacter(mWordsTv,
                 mDataManager.getDaoSession().getHouseDao().load(mCurrentCharacter.getHouseRemoteId()).getWords());
         setInfoAboutCharacter(mBornTv, mCurrentCharacter.getBorn());
@@ -92,14 +91,21 @@ public class CharacterActivity extends BaseActivity {
         }
         if (sb.length() == 0)
             ((View) mTitlesTv.getParent()).setVisibility(View.GONE);
-        else mTitlesTv.setText(sb);
+        else {
+            mTitlesTv.setText(sb);
+            ((View) mTitlesTv.getParent()).setVisibility(View.VISIBLE);
+        }
         sb = new StringBuilder();
         for (Alias alias : mCurrentCharacter.getAliases()) {
             sb.append(alias.getAlias() + "\n");
         }
         if (sb.length() == 0)
             ((View) mAliasesTv.getParent()).setVisibility(View.GONE);
-        else mAliasesTv.setText(sb);
+        else {
+            mAliasesTv.setText(sb);
+            ((View) mAliasesTv.getParent()).setVisibility(View.VISIBLE);
+
+        }
         setParent(mFatherBtn, mCurrentCharacter.getFather());
         setParent(mMotherBtn, mCurrentCharacter.getMother());
     }
@@ -107,7 +113,9 @@ public class CharacterActivity extends BaseActivity {
     public void setParent(Button parent, Long parentId) {
         if (parentId != null) {
             final SwornMember member = mDataManager.loadCharacterByApiId(parentId);
+
             if (member != null) {
+                ((View) parent.getParent()).setVisibility(View.VISIBLE);
                 parent.setText(member.getName());
                 parent.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -131,6 +139,7 @@ public class CharacterActivity extends BaseActivity {
         if (title.isEmpty()) {
             ((View) tv.getParent()).setVisibility(View.GONE);
         } else {
+            ((View) tv.getParent()).setVisibility(View.VISIBLE);
             tv.setText(title);
         }
     }

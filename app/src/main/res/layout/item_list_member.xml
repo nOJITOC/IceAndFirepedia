@@ -7,6 +7,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
+                  android:padding="@dimen/spacing_small_4"
                   android:orientation="horizontal">
 
         <ImageView
@@ -16,11 +17,24 @@
             android:layout_height="@dimen/size_medium_32"
             android:layout_margin="@dimen/spacing_medium_12"
             />
-
-        <TextView
-            android:id="@+id/name_tv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_normal_56"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginBottom="@dimen/spacing_small_4"/>
+            <TextView
+                android:id="@+id/words_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginBottom="@dimen/spacing_small_4"/>
+        </LinearLayout>
+
 
 
     </LinearLayout>

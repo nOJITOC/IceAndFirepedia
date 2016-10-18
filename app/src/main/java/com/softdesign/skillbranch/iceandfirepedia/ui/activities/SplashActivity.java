@@ -21,8 +21,10 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
 //        showProgress();
+        setTheme(R.style.AppThemeBefore);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         mDataManager = DataManager.getInstance();
         if (!mDataManager.getPreferencesManager().isDbComplete()) {
