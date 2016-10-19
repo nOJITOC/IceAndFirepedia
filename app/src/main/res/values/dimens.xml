@@ -12,4 +12,5 @@
     <dimen name="spacing_small_8">8dp</dimen>
     <dimen name="spacing_large_56">52dp</dimen>
     <dimen name="spacing_larger_42">42dp</dimen>
+    <dimen name="margin_72">72dp</dimen>
 </resources>

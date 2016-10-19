@@ -13,11 +13,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.softdesign.skillbranch.iceandfirepedia.R;
 import com.softdesign.skillbranch.iceandfirepedia.data.managers.DataManager;
 import com.softdesign.skillbranch.iceandfirepedia.data.storage.models.Alias;
 import com.softdesign.skillbranch.iceandfirepedia.data.storage.models.SwornMember;
 import com.softdesign.skillbranch.iceandfirepedia.data.storage.models.Title;
+import com.softdesign.skillbranch.iceandfirepedia.ui.views.AspectRatioImageView;
 import com.softdesign.skillbranch.iceandfirepedia.utils.ConstantManager;
 
 import java.util.ArrayList;
